@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {Fragment} from "react";
+import { Fragment } from "react";
 import theme from "../theme";
 
 export default props => (
@@ -8,22 +8,22 @@ export default props => (
 			<Link href="/">
 				<a className="home">Paper</a>
 			</Link>
-			{
-				props.breadcrumbs ? props.breadcrumbs.map((segment, i) => (
+			{props.breadcrumbs ? (
+				props.breadcrumbs.map((segment, i) => (
 					<Fragment key={i}>
 						<span>/</span>
-						{
-							segment.href ? (
-								<Link href={segment.href} as={segment.as}>
-									<a className="bc">{segment.name}</a>
-								</Link>
-							) : (
+						{segment.href ? (
+							<Link href={segment.href} as={segment.as}>
 								<a className="bc">{segment.name}</a>
-							)
-						}
+							</Link>
+						) : (
+							<a className="bc">{segment.name}</a>
+						)}
 					</Fragment>
-				)) : <></>
-			}
+				))
+			) : (
+				<></>
+			)}
 		</div>
 
 		{props.user ? (
