@@ -2,7 +2,15 @@ import Page from "../components/Page";
 
 export default () => {
   return (
-    <Page>
+    <Page breadcrumbs={[
+      {
+        name: "@archie",
+        href: "/test"
+      },
+      {
+        name: "Hello World"
+      }
+    ]}>
       <p>test</p>
     </Page>
   );

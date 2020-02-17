@@ -1,12 +1,29 @@
 import Link from "next/link";
+import {Fragment} from "react";
 import theme from "../theme";
 
 export default props => (
 	<header>
-		<div className="headerMain">
+		<div className="breadcrumbs">
 			<Link href="/">
 				<a className="home">Paper</a>
 			</Link>
+			{
+				props.breadcrumbs ? props.breadcrumbs.map((segment, i) => (
+					<Fragment key={i}>
+						<span>/</span>
+						{
+							segment.href ? (
+								<Link href={segment.href} as={segment.as}>
+									<a className="bc">{segment.name}</a>
+								</Link>
+							) : (
+								<a className="bc">{segment.name}</a>
+							)
+						}
+					</Fragment>
+				)) : <></>
+			}
 		</div>
 
 		{props.user ? (
@@ -27,7 +44,7 @@ export default props => (
 				flex-shrink: 0;
 			}
 
-			.headerMain {
+			.breadcrumbs {
 				flex-grow: 1;
 				display: flex;
 				overflow-x: auto;
@@ -44,6 +61,18 @@ export default props => (
 
 			a.home {
 				font-weight: 700;
+			}
+
+			.breadcrumbs span {
+				color: ${theme.grey8};
+				font-size: 15px;
+				margin: auto 0;
+			}
+
+			.breadcrumbs a.bc {
+				color: ${theme.grey4};
+				margin: auto 15px;
+				font-size: 15px;
 			}
 
 			a.profilePicture {

@@ -11,7 +11,7 @@ export default props => (
             <title>{props.title ? `Paper // ${props.title}` : `Paper`}</title>
         </Head>
 
-        <Header />
+        <Header breadcrumbs={props.breadcrumbs} />
         <main>
             {props.children}
         </main>
