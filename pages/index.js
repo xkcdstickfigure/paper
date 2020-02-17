@@ -1,5 +1,9 @@
+import Page from "../components/Page";
+
 export default () => {
   return (
-    <p>test</p>
+    <Page>
+      <p>test</p>
+    </Page>
   );
 };
