@@ -13,9 +13,7 @@ export default props => (
 
 		<Header breadcrumbs={props.breadcrumbs} />
 		<main>
-			<div className="innerMain">
-				{props.children}
-			</div>
+			<div className="innerMain">{props.children}</div>
 		</main>
 
 		<style jsx>{`
