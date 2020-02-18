@@ -9,6 +9,7 @@ export default props => (
 	<div className="pageContainer">
 		<Head>
 			<title>{props.title ? `Paper // ${props.title}` : `Paper`}</title>
+			<link rel="shortcut icon" href="/icon.png" />
 		</Head>
 
 		<Header breadcrumbs={props.breadcrumbs} />
