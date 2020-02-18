@@ -3,7 +3,7 @@ import theme from "../theme";
 import Link from "next/link";
 
 export default props => (
-	<Link href="/p/[user]/[id]" as={`/p/${props.username}/${props.slug}`}>
+	<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
 		<a style={{ margin: "15px auto" }}>
 			<div className="post">
 				<img src={props.image} />
