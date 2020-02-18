@@ -1,47 +1,53 @@
 import theme from "../theme";
-
 import Link from "next/link";
 
 export default props => (
-	<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
-		<a style={{ margin: "15px auto" }}>
-			<div className="post">
-				<img src={props.image} />
-				<h1>{props.title}</h1>
-				<h2>@{props.username}</h2>
-				<p>{props.excerpt}</p>
+	<div style={{ margin: "0 auto", padding: "20px 10px"}}>
+		<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
+			<a style={{ outline: "none" }}>
+				<div className="post">
+					<img src={props.image} />
+					<h1>{props.title}</h1>
+					<h2>@{props.username}</h2>
+					<p>{props.excerpt}</p>
 
-				<style jsx>{`
-					.post {
-						border: solid 1px ${theme.borderGrey};
-						background: white;
-						width: 300px;
-						box-sizing: border-box;
-						padding: 15px;
-					}
+					<style jsx>{`
+						.post {
+							border: solid 1px ${theme.borderGrey};
+							background: white;
+							width: 250px;
+							box-sizing: border-box;
+							padding: 15px;
+							transition: 0.1s;
+						}
 
-					img {
-						width: 100%;
-						border-radius: 10px;
-					}
+						.post:hover {
+							border-color: ${theme.grey8};
+						}
 
-					h1 {
-						font-size: 20px;
-						margin: 10px 0 0 0;
-					}
+						img {
+							width: 100%;
+							border-radius: 10px;
+						}
 
-					h2 {
-						margin: 0 0 10px 0;
-						font-size: 15px;
-						font-weight: 300;
-					}
+						h1 {
+							font-size: 20px;
+							margin: 10px 0 0 0;
+						}
 
-					p {
-						margin: 0;
-						color: ${theme.grey4};
-					}
-				`}</style>
-			</div>
-		</a>
-	</Link>
+						h2 {
+							margin: 0 0 10px 0;
+							font-size: 15px;
+							font-weight: 300;
+						}
+
+						p {
+							margin: 0;
+							color: ${theme.grey4};
+						}
+					`}</style>
+				</div>
+			</a>
+		</Link>
+	</div>
 );
