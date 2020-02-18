@@ -67,12 +67,17 @@ export default props => (
 				color: ${theme.grey8};
 				font-size: 15px;
 				margin: auto 0;
+				cursor: default;
 			}
 
 			.breadcrumbs a.bc {
 				color: ${theme.grey4};
 				margin: auto 15px;
 				font-size: 15px;
+			}
+
+			.breadcrumbs a.bc:not([href]) {
+				cursor: default;
 			}
 
 			a.profilePicture {
