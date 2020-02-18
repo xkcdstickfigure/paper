@@ -12,7 +12,11 @@ export default props => (
 		</Head>
 
 		<Header breadcrumbs={props.breadcrumbs} />
-		<main>{props.children}</main>
+		<main>
+			<div className="innerMain">
+				{props.children}
+			</div>
+		</main>
 
 		<style jsx>{`
 			.pageContainer {
@@ -25,6 +29,11 @@ export default props => (
 				padding: 20px;
 				flex-grow: 1;
 				background: ${theme.greyF};
+			}
+
+			.innerMain {
+				max-width: 1000px;
+				margin: 20px auto;
 			}
 		`}</style>
 
