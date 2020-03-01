@@ -2,16 +2,16 @@ import theme from "../theme";
 import Link from "next/link";
 
 export default props => (
-	<div style={{ margin: "0 auto", padding: "20px 10px"}}>
+	<div style={{padding: "10px"}}>
 		<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
 			<a style={{ outline: "none" }}>
-				<div className="post">
+				<div className="post" style={props.style}>
 					<img src={props.image} />
 					<h1>{props.title}</h1>
 					<h2>@{props.username}</h2>
 					<p>{props.excerpt}</p>
 
-					<style jsx>{`
+					<style jsx>{`						
 						.post {
 							border: solid 1px ${theme.borderGrey};
 							background: white;
