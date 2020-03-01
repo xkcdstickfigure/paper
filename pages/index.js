@@ -1,13 +1,14 @@
 import Page from "../components/Page";
 import theme from "../theme";
+import withAuth from "../util/withAuth";
 
 import Post from "../components/PostCard";
 
 const Homepage = props => {
 	return (
-		<Page>
+		<Page user={props.user}>
 			<section className="greeting">
-				<h1>Hello, Archie</h1>
+				<h1>Hello, {props.user.nickname}</h1>
 			</section>
 
 			<section className="posts">
@@ -91,4 +92,4 @@ Homepage.getInitialProps = ctx => {
 	};
 };
 
-export default Homepage;
+export default withAuth(Homepage);

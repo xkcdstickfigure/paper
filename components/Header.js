@@ -27,7 +27,7 @@ export default props => (
 		</div>
 
 		{props.user ? (
-			<Link href="/me">
+			<Link href="/[userid]" as={`/${props.user.username}`}>
 				<a className="profilePicture">
 					<img src={`https://avatar.alles.cx/user/${props.user.id}`} />
 				</a>
