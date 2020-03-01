@@ -1,5 +1,4 @@
 import Page from "../../components/Page";
-import theme from "../../theme";
 import withAuth from "../../util/withAuth";
 
 const userPage = props => (

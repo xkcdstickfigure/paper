@@ -14,11 +14,11 @@ export default (WrappedComponent, allowGuest) => {
 	Wrapper.getInitialProps = async ctx => {
 		const user = await auth(ctx);
 
-        //Unauthorized Redirect
+		//Unauthorized Redirect
 		if (!user && !allowGuest) {
-            const redirectUrl = `https://alles.cx/login?redirect=${encodeURIComponent(
-                `https://paper.alles.cx${ctx.asPath}`
-            )}`;
+			const redirectUrl = `https://alles.cx/login?redirect=${encodeURIComponent(
+				`https://paper.alles.cx${ctx.asPath}`
+			)}`;
 
 			// https://github.com/zeit/next.js/blob/canary/examples/with-cookie-auth/utils/auth.js#L16
 			if (typeof window === "undefined") {
@@ -26,8 +26,8 @@ export default (WrappedComponent, allowGuest) => {
 				ctx.res.end();
 			} else {
 				window.location.href = redirectUrl;
-            }
-            
+			}
+
 			return { user: null };
 		}
 

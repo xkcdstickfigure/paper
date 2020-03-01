@@ -1,5 +1,4 @@
 import Page from "../components/Page";
-import theme from "../theme";
 import withAuth from "../util/withAuth";
 
 import Post from "../components/PostCard";
@@ -8,7 +7,10 @@ const Homepage = props => {
 	return (
 		<Page user={props.user}>
 			<section className="greeting">
-				<h1>Hello, {props.user.nickname}</h1>
+				<h1>
+					Hello, {props.user.nickname}
+					{props.user.plus ? <sup>+</sup> : <></>}
+				</h1>
 			</section>
 
 			<section className="posts">
