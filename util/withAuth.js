@@ -1,7 +1,6 @@
 import config from "../config";
 import nextCookie from "next-cookies";
 import axios from "axios";
-import Router from "next/router";
 
 export default (WrappedComponent, allowGuest) => {
 	const Wrapper = props => {
@@ -15,14 +14,20 @@ export default (WrappedComponent, allowGuest) => {
 	Wrapper.getInitialProps = async ctx => {
 		const user = await auth(ctx);
 
-		//Unauthorized Redirect
+        //Unauthorized Redirect
 		if (!user && !allowGuest) {
-			ctx.res.writeHead(302, {
-				Location: `https://alles.cx/login?redirect=${encodeURIComponent(
-					"https://paper.alles.cx"
-				)}`
-			});
-			ctx.res.end();
+            const redirectUrl = `https://alles.cx/login?redirect=${encodeURIComponent(
+                `https://paper.alles.cx${ctx.asPath}`
+            )}`;
+
+			// https://github.com/zeit/next.js/blob/canary/examples/with-cookie-auth/utils/auth.js#L16
+			if (typeof window === "undefined") {
+				ctx.res.writeHead(302, { Location: redirectUrl });
+				ctx.res.end();
+			} else {
+				window.location.href = redirectUrl;
+            }
+            
 			return { user: null };
 		}
 

@@ -1,9 +1,11 @@
 import Page from "../../components/Page";
 import theme from "../../theme";
+import withAuth from "../../util/withAuth";
 
 const userPage = props => (
 	<Page
 		title="@archie"
+		user={props.user}
 		breadcrumbs={[
 			{
 				name: "@archie"
@@ -12,4 +14,4 @@ const userPage = props => (
 	></Page>
 );
 
-export default userPage;
+export default withAuth(userPage);
