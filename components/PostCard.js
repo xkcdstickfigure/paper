@@ -2,7 +2,7 @@ import theme from "../theme";
 import Link from "next/link";
 
 export default props => (
-	<div style={{padding: "10px"}}>
+	<div style={{ padding: "10px" }}>
 		<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
 			<a style={{ outline: "none" }}>
 				<div className="post" style={props.style}>
@@ -11,7 +11,7 @@ export default props => (
 					<h2>@{props.username}</h2>
 					<p>{props.excerpt}</p>
 
-					<style jsx>{`						
+					<style jsx>{`
 						.post {
 							border: solid 1px ${theme.borderGrey};
 							background: white;

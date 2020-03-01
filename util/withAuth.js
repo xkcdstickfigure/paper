@@ -17,7 +17,11 @@ export default (WrappedComponent, allowGuest) => {
 
 		//Unauthorized Redirect
 		if (!user && !allowGuest) {
-            ctx.res.writeHead(302, { Location: `https://alles.cx/login?redirect=${encodeURIComponent("https://paper.alles.cx")}` });
+			ctx.res.writeHead(302, {
+				Location: `https://alles.cx/login?redirect=${encodeURIComponent(
+					"https://paper.alles.cx"
+				)}`
+			});
 			ctx.res.end();
 			return { user: null };
 		}
@@ -40,7 +44,7 @@ export default (WrappedComponent, allowGuest) => {
 
 const auth = async ctx => {
 	const { sessionToken } = nextCookie(ctx);
-    if (!sessionToken) return;
+	if (!sessionToken) return;
 	var apiReq;
 	try {
 		apiReq = await axios.get(`${config.apiUrl}/me`, {
@@ -50,7 +54,7 @@ const auth = async ctx => {
 		});
 	} catch (err) {
 		return;
-    }
+	}
 
 	return {
 		sessionToken,
