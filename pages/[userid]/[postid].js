@@ -92,8 +92,33 @@ const postPage = props => {
 						margin-bottom: 50px;
 					}
 
+					.content {
+						line-height: 30px;
+					}
+				`}</style>
+
+				<style jsx global>{`
 					.content img {
+						min-width: 200px;
 						max-width: 100%;
+						display: block;
+						margin: 20px auto;
+						border-radius: 10px;
+					}
+
+					.content a {
+						text-decoration: underline;
+						color: ${theme.accent};
+					}
+
+					.content code, .content pre {
+						font-family: inherit;
+					}
+
+					.content code {
+						background: ${theme.greyF};
+						display: inline-block;
+						padding: 10px;
 					}
 				`}</style>
 			</Page>
