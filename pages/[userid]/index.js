@@ -16,15 +16,19 @@ const userPage = props =>
 			]}
 		>
 			<main>
-				<img className="profilePicture" src={`https://avatar.alles.cx/user/${props.requestedUser.id}`} />
+				<img
+					className="profilePicture"
+					src={`https://avatar.alles.cx/user/${props.requestedUser.id}`}
+				/>
 				<div className="basicInfo">
-					<h1 className="name">{props.requestedUser.name}
+					<h1 className="name">
+						{props.requestedUser.name}
 						{props.requestedUser.plus ? <sup>+</sup> : <></>}
 					</h1>
 					<p className="about">{props.requestedUser.about}</p>
 				</div>
 			</main>
-			
+
 			<style jsx>{`
 				main {
 					background: white;
@@ -61,6 +65,7 @@ const userPage = props =>
 
 				h1.name {
 					font-weight: 500;
+					margin: 0;
 					margin-bottom: 5px;
 				}
 
@@ -71,20 +76,13 @@ const userPage = props =>
 			`}</style>
 		</Page>
 	) : (
-		<Page
-			user={props.user}
-			breadcrumbs={[
-				{
-					name: "???"
-				}
-			]}
-		>
+		<Page user={props.user}>
 			<h1>404: This page does not exist</h1>
 		</Page>
 	);
 
 userPage.getInitialProps = async ctx => {
-	const {userid} = ctx.query;
+	const { userid } = ctx.query;
 
 	var apiReq;
 	try {
