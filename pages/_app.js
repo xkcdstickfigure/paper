@@ -1,5 +1,5 @@
 import "../node_modules/highlight.js/styles/default.css";
 
-export default ({Component, pageProps}) => {
-    return <Component {...pageProps} />;
+export default ({ Component, pageProps }) => {
+	return <Component {...pageProps} />;
 };

@@ -5,6 +5,26 @@ import config from "../../config";
 import theme from "../../theme";
 import Link from "next/link";
 import { useState } from "react";
+import moment from "moment";
+
+moment.updateLocale("en", {
+	relativeTime: {
+		future: "in %s",
+		past: "%s ago",
+		s: "seconds",
+		ss: "%ss",
+		m: "a minute",
+		mm: "%dm",
+		h: "an hour",
+		hh: "%dh",
+		d: "a day",
+		dd: "%dd",
+		M: "a month",
+		MM: "%dM",
+		y: "a year",
+		yy: "%dY"
+	}
+});
 
 const postPage = props => {
 	if (props.post) {
@@ -26,16 +46,20 @@ const postPage = props => {
 				]}
 			>
 				<main>
-					<Link href="/[userid]" as={`/${props.post.author.username}`}>
-						<a className="author">
-							<img
-								src={`https://avatar.alles.cx/user/${props.post.author.id}`}
-							/>
-							<h1>{props.post.author.name}</h1>
-						</a>
-					</Link>
-
 					<h1 className="postTitle">{props.post.title}</h1>
+					<h2 className="belowPostTitle">
+						<Link href="/[userid]" as={`/${props.post.author.username}`}>
+							<a>
+								<img
+									src={`https://avatar.alles.cx/user/${props.post.author.id}`}
+								/>{" "}
+								{props.post.author.name}
+							</a>
+						</Link>{" "}
+						// <span title={moment(props.post.createdAt).format("LLL")}>{moment(props.post.createdAt).format("LL")} (
+						{moment(props.post.createdAt).fromNow()})</span>
+					</h2>
+
 					{showFeaturedImage ? (
 						<img
 							className="image"
@@ -50,6 +74,15 @@ const postPage = props => {
 						className="content"
 						dangerouslySetInnerHTML={{ __html: props.post.htmlContent }}
 					></div>
+					{
+						props.post.editedAt ? (
+							<p style={{
+								color: theme.grey4,
+								fontStyle: "italic",
+								fontSize: 12
+							}}>Edited at {moment(props.post.editedAt).format("LLL")}</p>
+						) : <></>
+					}
 				</main>
 
 				<style jsx>{`
@@ -62,25 +95,24 @@ const postPage = props => {
 						overflow: hidden;
 					}
 
-					.author {
-						display: flex;
-					}
-
-					.author img {
-						border-radius: 50%;
-						height: 30px;
-						width: 30px;
-						margin-right: 10px;
-					}
-
-					.author h1 {
-						margin: auto 0;
-						font-weight: 400;
-						font-size: 25px;
-					}
-
 					.postTitle {
 						font-size: 40px;
+						margin-bottom: 10px;
+					}
+
+					.belowPostTitle {
+						font-weight: 400;
+						font-size: 15px;
+						color: ${theme.grey4};
+					}
+
+					.belowPostTitle img {
+						border-radius: 50%;
+						height: 25px;
+						width: 25px;
+						margin-right: 5px;
+						display: inline-block;
+						vertical-align: middle;
 					}
 
 					.image {
@@ -111,7 +143,8 @@ const postPage = props => {
 						color: ${theme.accent};
 					}
 
-					.content code, .content pre {
+					.content code,
+					.content pre {
 						font-family: inherit;
 					}
 
