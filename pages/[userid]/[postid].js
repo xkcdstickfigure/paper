@@ -102,7 +102,7 @@ const postPage = props => {
 						min-width: 200px;
 						max-width: 100%;
 						display: block;
-						margin: 20px auto;
+						margin: 50px auto;
 						border-radius: 10px;
 					}
 
@@ -118,7 +118,15 @@ const postPage = props => {
 					.content code {
 						background: ${theme.greyF};
 						display: inline-block;
+						padding: 0 5px;
+						border: solid 1px ${theme.borderGrey};
+					}
+
+					.content pre code {
 						padding: 10px;
+						display: block;
+						border-radius: 10px;
+						margin: 50px 30px;
 					}
 				`}</style>
 			</Page>
