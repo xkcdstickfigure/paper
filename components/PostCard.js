@@ -1,5 +1,6 @@
 import theme from "../theme";
 import Link from "next/link";
+import moment from "moment";
 
 export default props => (
 	<div style={{ padding: "10px" }}>
@@ -8,7 +9,7 @@ export default props => (
 				<div className="post" style={props.style}>
 					<img src={props.image} />
 					<h1>{props.title}</h1>
-					<h2>@{props.username}</h2>
+					<h2>@{props.username} // {moment(props.createdAt).format("LL")}</h2>
 					<p>{props.excerpt}</p>
 
 					<style jsx>{`
@@ -37,7 +38,7 @@ export default props => (
 
 						h2 {
 							margin: 0 0 10px 0;
-							font-size: 15px;
+							font-size: 12px;
 							font-weight: 300;
 						}
 
