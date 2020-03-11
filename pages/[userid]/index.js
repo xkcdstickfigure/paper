@@ -3,6 +3,7 @@ import withAuth from "../../util/withAuth";
 import axios from "axios";
 import config from "../../config";
 import theme from "../../theme";
+import Post from "../../components/PostCard";
 
 const userPage = props =>
 	props.requestedUser ? (
@@ -28,6 +29,22 @@ const userPage = props =>
 					<p className="about">{props.requestedUser.about}</p>
 				</div>
 			</main>
+
+			<section className="posts">
+				{props.requestedUser.posts.map(post => (
+					<Post
+						key={post.id}
+						title={post.title}
+						username={post.username}
+						slug={post.slug}
+						image={post.image}
+						excerpt={post.excerpt}
+						style={{
+							width: "100%"
+						}}
+					/>
+				))}
+			</section>
 
 			<style jsx>{`
 				main {
@@ -73,6 +90,23 @@ const userPage = props =>
 					margin-top: 0;
 					color: ${theme.grey4};
 				}
+
+				section.posts {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr;
+				}
+
+				@media screen and (max-width: 750px) {
+					section.posts {
+						grid-template-columns: 1fr 1fr;
+					}
+				}
+
+				@media screen and (max-width: 500px) {
+					section.posts {
+						grid-template-columns: 1fr;
+					}
+				}
 			`}</style>
 		</Page>
 	) : (
@@ -89,7 +123,7 @@ userPage.getInitialProps = async ctx => {
 		apiReq = await axios.get(
 			`${config.apiUrl}/user?username=${encodeURIComponent(
 				userid.toLowerCase()
-			)}`
+			)}&posts`
 		);
 	} catch (err) {
 		return;
