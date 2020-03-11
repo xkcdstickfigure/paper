@@ -40,6 +40,7 @@ export default props => (
 		<style jsx global>{`
 			@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap");
 			@import url("https://use.fontawesome.com/releases/v5.12.0/css/all.css");
+			@import url("/nprogress.css");
 
 			body {
 				font-family: Rubik, sans-serif;
