@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import {Fragment} from "react";
 import theme from "../theme";
 
 export default props => (

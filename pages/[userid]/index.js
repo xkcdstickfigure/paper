@@ -116,7 +116,7 @@ const userPage = props =>
 	);
 
 userPage.getInitialProps = async ctx => {
-	const { userid } = ctx.query;
+	const {userid} = ctx.query;
 
 	var apiReq;
 	try {

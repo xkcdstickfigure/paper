@@ -4,7 +4,7 @@ import axios from "axios";
 import config from "../../config";
 import theme from "../../theme";
 import Link from "next/link";
-import { useState } from "react";
+import {useState} from "react";
 import moment from "moment";
 
 moment.updateLocale("en", {
@@ -56,8 +56,11 @@ const postPage = props => {
 								{props.post.author.name}
 							</a>
 						</Link>{" "}
-						// <span title={moment(props.post.createdAt).format("LLL")}>{moment(props.post.createdAt).format("LL")} (
-						{moment(props.post.createdAt).fromNow()})</span>
+						//{" "}
+						<span title={moment(props.post.createdAt).format("LLL")}>
+							{moment(props.post.createdAt).format("LL")} (
+							{moment(props.post.createdAt).fromNow()})
+						</span>
 					</h2>
 
 					{showFeaturedImage ? (
@@ -72,17 +75,21 @@ const postPage = props => {
 
 					<div
 						className="content"
-						dangerouslySetInnerHTML={{ __html: props.post.htmlContent }}
+						dangerouslySetInnerHTML={{__html: props.post.htmlContent}}
 					></div>
-					{
-						props.post.editedAt ? (
-							<p style={{
+					{props.post.editedAt ? (
+						<p
+							style={{
 								color: theme.grey4,
 								fontStyle: "italic",
 								fontSize: 12
-							}}>Edited at {moment(props.post.editedAt).format("LLL")}</p>
-						) : <></>
-					}
+							}}
+						>
+							Edited at {moment(props.post.editedAt).format("LLL")}
+						</p>
+					) : (
+						<></>
+					)}
 				</main>
 
 				<style jsx>{`
@@ -174,7 +181,7 @@ const postPage = props => {
 };
 
 postPage.getInitialProps = async ctx => {
-	const { userid, postid } = ctx.query;
+	const {userid, postid} = ctx.query;
 
 	var apiReq;
 	try {
