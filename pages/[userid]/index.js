@@ -126,7 +126,7 @@ userPage.getInitialProps = async ctx => {
 			)}&posts`,
 			{
 				headers: {
-					authorization: props.user.sessionToken
+					authorization: ctx.user.sessionToken
 				}
 			}
 		);
