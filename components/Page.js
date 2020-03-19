@@ -43,8 +43,14 @@ export default props => (
 			@import url("/nprogress.css");
 
 			body {
-				font-family: Rubik, sans-serif;
 				margin: 0;
+			}
+
+			body,
+			textarea,
+			input,
+			button {
+				font-family: Rubik, sans-serif;
 			}
 
 			a {
