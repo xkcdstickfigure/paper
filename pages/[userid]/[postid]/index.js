@@ -1,8 +1,8 @@
-import Page from "../../components/Page";
-import withAuth from "../../util/withAuth";
+import Page from "../../../components/Page";
+import withAuth from "../../../util/withAuth";
 import axios from "axios";
-import config from "../../config";
-import theme from "../../theme";
+import config from "../../../config";
+import theme from "../../../theme";
 import Link from "next/link";
 import {useState} from "react";
 import moment from "moment";
@@ -61,6 +61,20 @@ const postPage = props => {
 							{moment(props.post.createdAt).format("LL")} (
 							{moment(props.post.createdAt).fromNow()})
 						</span>
+						{props.user && props.post.author.id === props.user.id ? (
+							<>
+								{" "}
+								//{" "}
+								<Link
+									href="/[userid]/[postid]/edit"
+									as={`/${props.post.author.username}/${props.post.slug}/edit`}
+								>
+									<a className="normal">Edit</a>
+								</Link>
+							</>
+						) : (
+							<></>
+						)}
 					</h2>
 
 					{showFeaturedImage ? (
