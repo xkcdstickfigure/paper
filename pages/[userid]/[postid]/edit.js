@@ -64,15 +64,19 @@ const editPage = props => {
 
 							setFormBusy(true);
 							axios
-								.post(`${config.apiUrl}/edit/${props.post.slug}`, {
-									title: postTitle,
-									image: postImage,
-									content: postContent
-								}, {
-									headers: {
-										authorization: props.user.sessionToken
+								.post(
+									`${config.apiUrl}/edit/${props.post.slug}`,
+									{
+										title: postTitle,
+										image: postImage,
+										content: postContent
+									},
+									{
+										headers: {
+											authorization: props.user.sessionToken
+										}
 									}
-								})
+								)
 								.then(() => {
 									location.href = `/${props.post.author.username}/${props.post.slug}`;
 								})
