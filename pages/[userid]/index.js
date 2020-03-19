@@ -123,7 +123,12 @@ userPage.getInitialProps = async ctx => {
 		apiReq = await axios.get(
 			`${config.apiUrl}/user?username=${encodeURIComponent(
 				userid.toLowerCase()
-			)}&posts`
+			)}&posts`,
+			{
+				headers: {
+					authorization: props.user.sessionToken
+				}
+			}
 		);
 	} catch (err) {
 		return;
