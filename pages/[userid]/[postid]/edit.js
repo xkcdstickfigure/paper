@@ -113,12 +113,36 @@ const editPage = props => {
 						<Button type="submit" disabled={formBusy}>
 							Update Post
 						</Button>
-						{formError ? (
-							<p style={{color: theme.error}}>{formError}</p>
-						) : (
-							<></>
-						)}
 					</form>
+
+					<Button secondary disabled={formBusy} onClick={() => {
+						setFormBusy(true);
+						axios
+							.post(
+								`${config.apiUrl}/delete/${props.post.slug}`,
+								{},
+								{
+									headers: {
+										authorization: props.user.sessionToken
+									}
+								}
+							)
+							.then(() => {
+								location.href = "/";
+							})
+							.catch(() => {
+								setFormError("Something went wrong.");
+								setFormBusy(false);
+							});
+					}}>
+						Delete Post
+					</Button>
+
+					{formError ? (
+						<p style={{color: theme.error}}>{formError}</p>
+					) : (
+						<></>
+					)}
 				</main>
 
 				<style jsx>{`

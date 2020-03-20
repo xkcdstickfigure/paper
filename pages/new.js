@@ -139,8 +139,9 @@ Anyway, that's probably 200 characters.`}
 					<Button type="submit" disabled={formBusy}>
 						Create Post
 					</Button>
-					{formError ? <p style={{color: theme.error}}>{formError}</p> : <></>}
 				</form>
+
+				{formError ? <p style={{color: theme.error}}>{formError}</p> : <></>}
 			</main>
 
 			<style jsx>{`
