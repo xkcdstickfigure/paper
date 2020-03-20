@@ -3,7 +3,6 @@ import withAuth from "../../../util/withAuth";
 import axios from "axios";
 import config from "../../../config";
 import theme from "../../../theme";
-import Link from "next/link";
 import {useState} from "react";
 import Input from "../../../components/Input";
 import Textarea from "../../../components/Textarea";
@@ -38,7 +37,7 @@ const editPage = props => {
 				]}
 			>
 				<main>
-					<h1 className="postTitle">{props.post.title}</h1>
+					<h1>{props.post.title}</h1>
 
 					<form
 						onSubmit={e => {
@@ -132,7 +131,7 @@ const editPage = props => {
 						overflow: hidden;
 					}
 
-					.postTitle {
+					h1 {
 						font-size: 40px;
 						margin-bottom: 10px;
 					}

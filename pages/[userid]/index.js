@@ -4,6 +4,7 @@ import axios from "axios";
 import config from "../../config";
 import theme from "../../theme";
 import Post from "../../components/PostCard";
+import NewButton from "../../components/NewButton";
 
 const userPage = props =>
 	props.requestedUser ? (
@@ -45,6 +46,8 @@ const userPage = props =>
 					/>
 				))}
 			</section>
+
+			{props.user ? <NewButton /> : <></>}
 
 			<style jsx>{`
 				main {

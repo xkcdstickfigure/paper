@@ -6,6 +6,7 @@ import theme from "../../../theme";
 import Link from "next/link";
 import {useState} from "react";
 import moment from "moment";
+import NewButton from "../../../components/NewButton";
 
 moment.updateLocale("en", {
 	relativeTime: {
@@ -105,6 +106,8 @@ const postPage = props => {
 						<></>
 					)}
 				</main>
+
+				{props.user ? <NewButton /> : <></>}
 
 				<style jsx>{`
 					main {

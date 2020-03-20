@@ -1,7 +1,7 @@
 import Page from "../components/Page";
 import withAuth from "../util/withAuth";
-
 import Post from "../components/PostCard";
+import NewButton from "../components/NewButton";
 
 const Homepage = props => {
 	return (
@@ -28,6 +28,8 @@ const Homepage = props => {
 					/>
 				))}
 			</section>
+
+			<NewButton />
 
 			<style jsx>{`
 				section.greeting {
