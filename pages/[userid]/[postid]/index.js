@@ -92,7 +92,7 @@ const postPage = props => {
 						className="content"
 						dangerouslySetInnerHTML={{__html: props.post.htmlContent}}
 					></div>
-					{props.post.editedAt ? (
+					{props.post.updatedAt ? (
 						<p
 							style={{
 								color: theme.grey4,
@@ -100,7 +100,7 @@ const postPage = props => {
 								fontSize: 12
 							}}
 						>
-							Edited at {moment(props.post.editedAt).format("LLL")}
+							Updated at {moment(props.post.updatedAt).format("LLL")}
 						</p>
 					) : (
 						<></>
