@@ -184,7 +184,12 @@ editPage.getInitialProps = async ctx => {
 		apiReq = await axios.get(
 			`${config.apiUrl}/post/${encodeURIComponent(
 				userid.toLowerCase()
-			)}/${encodeURIComponent(postid.toLowerCase())}`
+			)}/${encodeURIComponent(postid.toLowerCase())}`,
+			{
+				headers: {
+					authorization: ctx.user.sessionToken
+				}
+			}
 		);
 	} catch (err) {
 		return;
