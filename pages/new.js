@@ -7,6 +7,7 @@ import {useState} from "react";
 import Input from "../components/Input";
 import Textarea from "../components/Textarea";
 import Button from "../components/Button";
+import Link from "next/link";
 
 const newPage = props => {
 	const [postTitle, setPostTitle] = useState("");
@@ -29,6 +30,7 @@ const newPage = props => {
 		>
 			<main>
 				<h1>New Post</h1>
+				<p>Make sure you check our <Link href="/[userid]/[postid]" as={"/archie/paper#rules"}><a className="normal" target="_blank">rules</a></Link> before you post.</p>
 
 				<form
 					onSubmit={e => {
