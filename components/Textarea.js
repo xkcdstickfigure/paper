@@ -6,7 +6,7 @@ export default props => (
 		<style jsx>{`
 			textarea {
 				width: 100%;
-				height: 200px;
+				height: 300px;
 				resize: none;
 				box-sizing: border-box;
 				border: solid 1px ${theme.borderGrey};
