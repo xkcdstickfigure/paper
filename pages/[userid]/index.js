@@ -51,8 +51,6 @@ const userPage = props =>
 
 			<style jsx>{`
 				main {
-					background: white;
-					border: solid 1px ${theme.borderGrey};
 					width: 100%;
 					padding: 20px;
 					box-sizing: border-box;
