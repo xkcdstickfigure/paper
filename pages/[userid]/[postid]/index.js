@@ -108,7 +108,13 @@ const postPage = props => {
 					)}
 					{props.user ? (
 						<p className="like">
-							{liked ? (props.post.liked ? props.post.likes : props.post.likes + 1) : (props.post.liked ? props.post.likes -1 : props.post.likes)}
+							{liked
+								? props.post.liked
+									? props.post.likes
+									: props.post.likes + 1
+								: props.post.liked
+								? props.post.likes - 1
+								: props.post.likes}
 							<i
 								className={liked ? "active fas fa-heart" : "far fa-heart"}
 								onClick={() => {
