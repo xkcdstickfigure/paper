@@ -15,7 +15,7 @@ const Homepage = props => {
 						{props.user.plus ? <sup>+</sup> : <></>}
 					</h1>
 				</section>
-	
+
 				<section className="posts">
 					{props.posts.map(post => (
 						<Post
@@ -31,29 +31,29 @@ const Homepage = props => {
 						/>
 					))}
 				</section>
-	
+
 				<NewButton />
-	
+
 				<style jsx>{`
 					section.greeting {
 						padding: 20px 19px;
 					}
-	
+
 					section.greeting h1 {
 						font-size: 30px;
 					}
-	
+
 					section.posts {
 						display: grid;
 						grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 					}
-	
+
 					@media screen and (max-width: 750px) {
 						section.posts {
 							grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 						}
 					}
-	
+
 					@media screen and (max-width: 500px) {
 						section.posts {
 							grid-template-columns: minmax(0, 1fr);
@@ -85,7 +85,7 @@ Homepage.getInitialProps = async ctx => {
 
 	return {
 		posts: apiReq.data.posts
-	}
+	};
 };
 
 export default withAuth(Homepage);
