@@ -7,7 +7,7 @@ export default (WrappedComponent, allowGuest) => {
 		if (props.user || allowGuest) {
 			return <WrappedComponent {...props} />;
 		} else {
-			return <p>Unauthorized</p>;
+			return <p>Signing you in...</p>;
 		}
 	};
 
