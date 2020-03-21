@@ -30,6 +30,7 @@ moment.updateLocale("en", {
 const postPage = props => {
 	if (props.post) {
 		const [showFeaturedImage, setShowFeaturedImage] = useState(true);
+		const [liked, setLiked] = useState(props.post.liked);
 
 		return (
 			<Page
@@ -105,6 +106,30 @@ const postPage = props => {
 					) : (
 						<></>
 					)}
+					{props.user ? (
+						<p className="like">
+							{liked ? (props.post.liked ? props.post.likes : props.post.likes + 1) : (props.post.liked ? props.post.likes -1 : props.post.likes)}
+							<i
+								className={liked ? "active fas fa-heart" : "far fa-heart"}
+								onClick={() => {
+									setLiked(!liked);
+									axios.post(
+										`${config.apiUrl}/${liked ? "unlike" : "like"}/${
+											props.post.author.username
+										}/${props.post.slug}`,
+										{},
+										{
+											headers: {
+												authorization: props.user.sessionToken
+											}
+										}
+									);
+								}}
+							></i>
+						</p>
+					) : (
+						<></>
+					)}
 				</main>
 
 				{props.user ? <NewButton /> : <></>}
@@ -150,6 +175,22 @@ const postPage = props => {
 
 					.content {
 						line-height: 30px;
+					}
+
+					.like {
+						text-align: right;
+						color: ${theme.grey4};
+					}
+
+					.like i {
+						font-size: 20px;
+						cursor: pointer;
+						margin-left: 5px;
+						vertical-align: center;
+					}
+
+					.like i.active {
+						color: #ff0044;
 					}
 				`}</style>
 
