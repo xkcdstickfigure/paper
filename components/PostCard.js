@@ -47,6 +47,7 @@ export default props => (
 						p {
 							margin: 0;
 							color: ${theme.grey4};
+							overflow-wrap: break-word;
 						}
 					`}</style>
 				</div>

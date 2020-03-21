@@ -42,18 +42,18 @@ const Homepage = props => {
 
 				section.posts {
 					display: grid;
-					grid-template-columns: 1fr 1fr 1fr;
+					grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 				}
 
 				@media screen and (max-width: 750px) {
 					section.posts {
-						grid-template-columns: 1fr 1fr;
+						grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 					}
 				}
 
 				@media screen and (max-width: 500px) {
 					section.posts {
-						grid-template-columns: 1fr;
+						grid-template-columns: minmax(0, 1fr);
 					}
 				}
 			`}</style>
