@@ -7,7 +7,9 @@ export default props => (
 		<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
 			<a style={{outline: "none"}}>
 				<div className="post" style={props.style}>
-					<img src={props.image} />
+					<div className="image">
+						<img src={props.image} />
+					</div>
 					<h1>{props.title}</h1>
 					<h2>
 						@{props.username} // {moment(props.createdAt).format("LL")}
@@ -22,20 +24,32 @@ export default props => (
 							box-sizing: border-box;
 							padding: 15px;
 							transition: 0.1s;
+							min-height: 450px;
 						}
 
 						.post:hover {
 							border-color: ${theme.grey8};
 						}
 
+						.image {
+							width: 100%;
+							height: 225px;
+							border-radius: 10px;
+							overflow: hidden;
+							display: flex;
+							flex-flow: column;
+							justify-content: center;
+						}
+
 						img {
 							width: 100%;
+							margin: 0 auto;
 							border-radius: 10px;
 						}
 
 						h1 {
 							font-size: 20px;
-							margin: 10px 0 0 0;
+							margin: 20px 0 0 0;
 						}
 
 						h2 {
