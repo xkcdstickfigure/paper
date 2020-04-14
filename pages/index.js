@@ -25,6 +25,7 @@ const Homepage = props => {
 							slug={post.slug}
 							image={post.image}
 							excerpt={post.excerpt}
+							createdAt={post.createdAt}
 							style={{
 								width: "100%"
 							}}
