@@ -1,4 +1,4 @@
-import theme from "../theme";
+import theme from "../reactants/theme";
 import Link from "next/link";
 import moment from "moment";
 

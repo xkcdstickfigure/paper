@@ -1,10 +1,11 @@
 import Page from "../../components/Page";
-import withAuth from "../../util/withAuth";
+import withAuth from "../../reactants/withAuth";
 import axios from "axios";
 import config from "../../config";
-import theme from "../../theme";
+import theme from "../../reactants/theme";
 import Post from "../../components/PostCard";
-import NewButton from "../../components/NewButton";
+import NewButton from "../../reactants/NewButton";
+import Link from "next/link";
 
 const userPage = props =>
 	props.requestedUser ? (
@@ -48,7 +49,11 @@ const userPage = props =>
 				))}
 			</section>
 
-			{props.user ? <NewButton /> : <></>}
+			<Link href="/new">
+				<a>
+					<NewButton />
+				</a>
+			</Link>
 
 			<style jsx>{`
 				main {
@@ -141,4 +146,4 @@ userPage.getInitialProps = async ctx => {
 	};
 };
 
-export default withAuth(userPage);
+export default withAuth(userPage, `${config.apiUrl}/me`);

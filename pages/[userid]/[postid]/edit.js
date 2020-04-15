@@ -1,12 +1,12 @@
 import Page from "../../../components/Page";
-import withAuth from "../../../util/withAuth";
+import withAuth from "../../../reactants/withAuth";
 import axios from "axios";
 import config from "../../../config";
-import theme from "../../../theme";
+import theme from "../../../reactants/theme";
 import {useState} from "react";
-import Input from "../../../components/Input";
-import Textarea from "../../../components/Textarea";
-import Button from "../../../components/Button";
+import Input from "../../../reactants/Input";
+import Textarea from "../../../reactants/TextArea";
+import Button from "../../../reactants/Button";
 
 const editPage = props => {
 	if (props.post && props.post.author.id === props.user.id) {
@@ -94,6 +94,7 @@ const editPage = props => {
 							defaultValue={props.post.title}
 							onInput={e => setPostTitle(e.target.value.trim())}
 							maxLength={config.inputBounds.title.max}
+							wide
 						/>
 
 						<h2>Image</h2>
@@ -101,6 +102,7 @@ const editPage = props => {
 							defaultValue={props.post.image}
 							onInput={e => setPostImage(e.target.value.trim())}
 							maxLength={config.inputBounds.image.max}
+							wide
 						/>
 
 						<h2>Content</h2>
@@ -108,9 +110,13 @@ const editPage = props => {
 							defaultValue={props.post.rawContent}
 							onInput={e => setPostContent(e.target.value.trim())}
 							maxLength={config.inputBounds.content.max}
+							wide
+							style={{
+								height: 300
+							}}
 						></Textarea>
 
-						<Button type="submit" disabled={formBusy}>
+						<Button type="submit" disabled={formBusy} wide>
 							Update Post
 						</Button>
 					</form>
@@ -138,6 +144,7 @@ const editPage = props => {
 									setFormBusy(false);
 								});
 						}}
+						wide
 					>
 						Delete Post
 					</Button>
@@ -200,4 +207,4 @@ editPage.getInitialProps = async ctx => {
 	};
 };
 
-export default withAuth(editPage);
+export default withAuth(editPage, `${config.apiUrl}/me`);

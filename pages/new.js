@@ -1,12 +1,12 @@
 import Page from "../components/Page";
-import withAuth from "../util/withAuth";
+import withAuth from "../reactants/withAuth";
 import axios from "axios";
 import config from "../config";
-import theme from "../theme";
+import theme from "../reactants/theme";
 import {useState} from "react";
-import Input from "../components/Input";
-import Textarea from "../components/Textarea";
-import Button from "../components/Button";
+import Input from "../reactants/Input";
+import Textarea from "../reactants/TextArea";
+import Button from "../reactants/Button";
 import Link from "next/link";
 
 const newPage = props => {
@@ -101,6 +101,7 @@ const newPage = props => {
 						}}
 						maxLength={config.inputBounds.title.max}
 						placeholder="Stuff I want to work on"
+						wide
 					/>
 
 					{customSlug ? (
@@ -111,16 +112,17 @@ const newPage = props => {
 								onInput={e => setPostSlug(e.target.value.trim())}
 								maxLength={config.inputBounds.slug.max}
 								placeholder="stuff-i-want-to-work-on"
+								wide
 							/>
 						</>
 					) : (
 						<p style={{color: theme.grey8}}>
 							https://paper.alles.cx/{props.user.username}/{postSlug}{" "}
 							<i
-								className="fas fa-pen"
+								className="material-icons"
 								style={{cursor: "pointer"}}
 								onClick={() => setCustomSlug(true)}
-							></i>
+							>edit</i>
 						</p>
 					)}
 
@@ -129,6 +131,7 @@ const newPage = props => {
 						onInput={e => setPostImage(e.target.value.trim())}
 						maxLength={config.inputBounds.image.max}
 						placeholder="https://img.alles.cx/1234567890"
+						wide
 					/>
 
 					<h2>Content</h2>
@@ -144,14 +147,18 @@ const newPage = props => {
 - Argon (Major Project) - I'll explain this in a lot of detail in another post
 - Crosshatch (Major Project) - Analytics service
 Anyway, that's probably 200 characters.`}
+						wide
+						style={{
+							height: 300
+						}}
 					></Textarea>
 
-					<Button type="submit" disabled={formBusy}>
+					<Button type="submit" disabled={formBusy} wide>
 						Create Post
 					</Button>
 				</form>
 
-				{formError ? <p style={{color: theme.error}}>{formError}</p> : <></>}
+				{formError ? <p style={{color: "red"}}>{formError}</p> : <></>}
 			</main>
 
 			<style jsx>{`
@@ -178,7 +185,7 @@ Anyway, that's probably 200 characters.`}
 	);
 };
 
-export default withAuth(newPage);
+export default withAuth(newPage, `${config.apiUrl}/me`);
 
 //Make a post slug
 const makeSlug = v =>

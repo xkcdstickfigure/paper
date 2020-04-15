@@ -1,12 +1,12 @@
 import Page from "../../../components/Page";
-import withAuth from "../../../util/withAuth";
+import withAuth from "../../../reactants/withAuth";
 import axios from "axios";
 import config from "../../../config";
-import theme from "../../../theme";
+import theme from "../../../reactants/theme";
 import Link from "next/link";
 import {useState} from "react";
 import moment from "moment";
-import NewButton from "../../../components/NewButton";
+import NewButton from "../../../reactants/NewButton";
 
 moment.updateLocale("en", {
 	relativeTime: {
@@ -116,7 +116,10 @@ const postPage = props => {
 								? props.post.likes - 1
 								: props.post.likes}
 							<i
-								className={liked ? "active fas fa-heart" : "far fa-heart"}
+								className={`material-icons ${liked ? "active" : ""}`}
+								style={{
+									verticalAlign: "middle"
+								}}
 								onClick={() => {
 									setLiked(!liked);
 									axios.post(
@@ -131,14 +134,20 @@ const postPage = props => {
 										}
 									);
 								}}
-							></i>
+							>favorite</i>
 						</p>
 					) : (
 						<></>
 					)}
 				</main>
 
-				{props.user ? <NewButton /> : <></>}
+				{props.user ? (
+					<Link href="/new">
+						<a>
+							<NewButton />
+						</a>
+					</Link>
+				) : <></>}
 
 				<style jsx>{`
 					main {
@@ -270,4 +279,4 @@ postPage.getInitialProps = async ctx => {
 	};
 };
 
-export default withAuth(postPage, true);
+export default withAuth(postPage, `${config.apiUrl}/me`, true);

@@ -1,16 +1,12 @@
-import theme from "../theme";
-
-import Head from "next/head";
-import Link from "next/link";
-
+import theme from "../reactants/theme";
+import Head from "../reactants/Head";
 import Header from "./Header";
+import GlobalStyles from "../reactants/GlobalStyles";
 
 export default props => (
-	<div className="pageContainer">
-		<Head>
-			<title>{props.title ? `Paper // ${props.title}` : `Paper`}</title>
+	<div className="page">
+		<Head title={props.title ? `Paper // ${props.title}` : `Paper`}>
 			<link rel="shortcut icon" href="/icon.png" />
-			<meta name="viewport" content="width=device-width, initial-scale=1" />
 		</Head>
 
 		<Header user={props.user} breadcrumbs={props.breadcrumbs} />
@@ -19,10 +15,9 @@ export default props => (
 		</main>
 
 		<style jsx>{`
-			.pageContainer {
+			.page {
 				display: flex;
 				flex-flow: column;
-				min-height: 100vh;
 			}
 
 			main {
@@ -38,34 +33,9 @@ export default props => (
 		`}</style>
 
 		<style jsx global>{`
-			@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap");
-			@import url("https://use.fontawesome.com/releases/v5.12.0/css/all.css");
 			@import url("/nprogress.css");
-
-			body {
-				margin: 0;
-			}
-
-			body,
-			textarea,
-			input,
-			button {
-				font-family: Rubik, sans-serif;
-			}
-
-			a {
-				color: inherit;
-				text-decoration: none;
-			}
-
-			a.normal {
-				color: ${theme.accent};
-				text-decoration: underline;
-			}
-
-			a.nocolor {
-				text-decoration: underline;
-			}
 		`}</style>
+
+		<GlobalStyles />
 	</div>
 );

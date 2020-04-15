@@ -1,9 +1,10 @@
 import Page from "../components/Page";
-import withAuth from "../util/withAuth";
+import withAuth from "../reactants/withAuth";
 import Post from "../components/PostCard";
-import NewButton from "../components/NewButton";
+import NewButton from "../reactants/NewButton";
 import config from "../config";
 import axios from "axios";
+import Link from "next/link";
 
 const Homepage = props => {
 	if (props.posts) {
@@ -33,7 +34,11 @@ const Homepage = props => {
 					))}
 				</section>
 
-				<NewButton />
+				<Link href="/new">
+					<a>
+						<NewButton />
+					</a>
+				</Link>
 
 				<style jsx>{`
 					section.greeting {
@@ -89,4 +94,4 @@ Homepage.getInitialProps = async ctx => {
 	};
 };
 
-export default withAuth(Homepage);
+export default withAuth(Homepage, `${config.apiUrl}/me`);
