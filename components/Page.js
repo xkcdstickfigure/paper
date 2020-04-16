@@ -1,6 +1,6 @@
 import theme from "../reactants/theme";
 import Head from "../reactants/Head";
-import Header from "./Header";
+import Header from "../reactants/Header";
 import GlobalStyles from "../reactants/GlobalStyles";
 
 export default props => (
@@ -9,7 +9,7 @@ export default props => (
 			<link rel="shortcut icon" href="/icon.png" />
 		</Head>
 
-		<Header user={props.user} breadcrumbs={props.breadcrumbs} />
+		<Header title="Paper" userId={props.user ? props.user.id : null} breadcrumbs={props.breadcrumbs} />
 		<main>
 			<div className="innerMain">{props.children}</div>
 		</main>
