@@ -1,7 +1,8 @@
 const dev = process.env.NODE_ENV === "development";
 
 export default {
-	apiUrl: `${dev ? "http://localhost" : "https://paper.alles.cx"}/api/v1`,
+	apiUrl: `${dev ? "http://localhost:3000" : "https://paper.alles.cx"}/api`,
+	fpApiUrl: "https://1api.alles.cx/v1",
 	dev,
 	inputBounds: {
 		title: {

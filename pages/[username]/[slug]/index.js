@@ -4,7 +4,7 @@ import axios from "axios";
 import config from "../../../config";
 import theme from "../../../reactants/theme";
 import Link from "next/link";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import moment from "moment";
 import NewButton from "../../../reactants/NewButton";
 
@@ -31,6 +31,17 @@ const postPage = props => {
 	if (props.post) {
 		const [showFeaturedImage, setShowFeaturedImage] = useState(true);
 		const [liked, setLiked] = useState(props.post.liked);
+		const [createdAt, setCreatedAt] = useState("");
+		const [fullCreatedAt, setFullCreatedAt] = useState("");
+		const [relCreatedAt, setRelCreatedAt] = useState("");
+		const [updatedAt, setUpdatedAt] = useState("");
+
+		useEffect(() => {
+			setCreatedAt(`${moment(props.post.createdAt).format("LL")} (${moment(props.post.createdAt).fromNow()})`);
+			setFullCreatedAt(moment(props.post.createdAt).format("LLL"));
+			setRelCreatedAt();
+			if (props.post.updatedAt) setUpdatedAt(moment(props.post.updatedAt).format("LLL"));
+		}, []);
 
 		return (
 			<Page
@@ -59,9 +70,8 @@ const postPage = props => {
 							</a>
 						</Link>{" "}
 						//{" "}
-						<span title={moment(props.post.createdAt).format("LLL")}>
-							{moment(props.post.createdAt).format("LL")} (
-							{moment(props.post.createdAt).fromNow()})
+						<span title={fullCreatedAt}>
+							{createdAt}
 						</span>
 						{props.user && props.post.author.id === props.user.id ? (
 							<>
@@ -101,7 +111,7 @@ const postPage = props => {
 								fontSize: 12
 							}}
 						>
-							Updated at {moment(props.post.updatedAt).format("LLL")}
+							Updated at {updatedAt}
 						</p>
 					) : (
 						<></>
@@ -123,9 +133,9 @@ const postPage = props => {
 								onClick={() => {
 									setLiked(!liked);
 									axios.post(
-										`${config.apiUrl}/${liked ? "unlike" : "like"}/${
+										`${config.apiUrl}/${liked ? "unlike" : "like"}?username=${
 											props.post.author.username
-										}/${props.post.slug}`,
+										}&slug=${props.post.slug}`,
 										{},
 										{
 											headers: {
@@ -254,14 +264,14 @@ const postPage = props => {
 };
 
 postPage.getInitialProps = async ctx => {
-	const {userid, postid} = ctx.query;
+	const {username, slug} = ctx.query;
 
 	var apiReq;
 	try {
 		apiReq = await axios.get(
-			`${config.apiUrl}/post/${encodeURIComponent(
-				userid.toLowerCase()
-			)}/${encodeURIComponent(postid.toLowerCase())}`,
+			`${config.apiUrl}/post?username=${encodeURIComponent(
+				username.toLowerCase()
+			)}&slug=${encodeURIComponent(slug.toLowerCase())}`,
 			{
 				headers: ctx.user
 					? {

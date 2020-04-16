@@ -123,13 +123,13 @@ const userPage = props =>
 	);
 
 userPage.getInitialProps = async ctx => {
-	const {userid} = ctx.query;
+	const {username} = ctx.query;
 
 	var apiReq;
 	try {
 		apiReq = await axios.get(
 			`${config.apiUrl}/user?username=${encodeURIComponent(
-				userid.toLowerCase()
+				username.toLowerCase()
 			)}&posts`,
 			{
 				headers: {

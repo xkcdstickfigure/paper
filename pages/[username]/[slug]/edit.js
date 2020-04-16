@@ -64,7 +64,7 @@ const editPage = props => {
 							setFormBusy(true);
 							axios
 								.post(
-									`${config.apiUrl}/edit/${props.post.slug}`,
+									`${config.apiUrl}/edit?slug=${props.post.slug}`,
 									{
 										title: postTitle,
 										image: postImage,
@@ -128,7 +128,7 @@ const editPage = props => {
 							setFormBusy(true);
 							axios
 								.post(
-									`${config.apiUrl}/delete/${props.post.slug}`,
+									`${config.apiUrl}/delete?slug=${props.post.slug}`,
 									{},
 									{
 										headers: {
@@ -184,14 +184,14 @@ const editPage = props => {
 };
 
 editPage.getInitialProps = async ctx => {
-	const {userid, postid} = ctx.query;
+	const {username, slug} = ctx.query;
 
 	var apiReq;
 	try {
 		apiReq = await axios.get(
-			`${config.apiUrl}/post/${encodeURIComponent(
-				userid.toLowerCase()
-			)}/${encodeURIComponent(postid.toLowerCase())}`,
+			`${config.apiUrl}/post?username=${encodeURIComponent(
+				username.toLowerCase()
+			)}&slug=${encodeURIComponent(slug.toLowerCase())}`,
 			{
 				headers: {
 					authorization: ctx.user.sessionToken

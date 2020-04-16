@@ -32,7 +32,7 @@ const newPage = props => {
 				<h1>New Post</h1>
 				<p>
 					Make sure you check our{" "}
-					<Link href="/[userid]/[postid]" as={"/archie/paper#rules"}>
+					<Link href="/[username]/[slug]" as={"/archie/paper#rules"}>
 						<a className="normal" target="_blank">
 							rules
 						</a>
@@ -63,7 +63,7 @@ const newPage = props => {
 						setFormBusy(true);
 						axios
 							.post(
-								`${config.apiUrl}/new/${postSlug}`,
+								`${config.apiUrl}/new?slug=${postSlug}`,
 								{
 									title: postTitle,
 									image: postImage,

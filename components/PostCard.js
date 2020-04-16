@@ -10,7 +10,7 @@ export default props => {
 
 	return (
 		<div style={{padding: "10px"}}>
-			<Link href="/[userid]/[postid]" as={`/${props.username}/${props.slug}`}>
+			<Link href="/[username]/[slug]" as={`/${props.username}/${props.slug}`}>
 				<a style={{outline: "none"}}>
 					<div className="post" style={props.style}>
 						<div className="image">
