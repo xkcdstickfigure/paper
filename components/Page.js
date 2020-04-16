@@ -9,7 +9,11 @@ export default props => (
 			<link rel="shortcut icon" href="/icon.png" />
 		</Head>
 
-		<Header title="Paper" userId={props.user ? props.user.id : null} breadcrumbs={props.breadcrumbs} />
+		<Header
+			title="Paper"
+			userId={props.user ? props.user.id : null}
+			breadcrumbs={props.breadcrumbs}
+		/>
 		<main>
 			<div className="innerMain">{props.children}</div>
 		</main>

@@ -37,10 +37,15 @@ const postPage = props => {
 		const [updatedAt, setUpdatedAt] = useState("");
 
 		useEffect(() => {
-			setCreatedAt(`${moment(props.post.createdAt).format("LL")} (${moment(props.post.createdAt).fromNow()})`);
+			setCreatedAt(
+				`${moment(props.post.createdAt).format("LL")} (${moment(
+					props.post.createdAt
+				).fromNow()})`
+			);
 			setFullCreatedAt(moment(props.post.createdAt).format("LLL"));
 			setRelCreatedAt();
-			if (props.post.updatedAt) setUpdatedAt(moment(props.post.updatedAt).format("LLL"));
+			if (props.post.updatedAt)
+				setUpdatedAt(moment(props.post.updatedAt).format("LLL"));
 		}, []);
 
 		return (
@@ -69,10 +74,7 @@ const postPage = props => {
 								{props.post.author.name}
 							</a>
 						</Link>{" "}
-						//{" "}
-						<span title={fullCreatedAt}>
-							{createdAt}
-						</span>
+						// <span title={fullCreatedAt}>{createdAt}</span>
 						{props.user && props.post.author.id === props.user.id ? (
 							<>
 								{" "}
@@ -144,7 +146,9 @@ const postPage = props => {
 										}
 									);
 								}}
-							>favorite</i>
+							>
+								favorite
+							</i>
 						</p>
 					) : (
 						<></>
@@ -157,7 +161,9 @@ const postPage = props => {
 							<NewButton />
 						</a>
 					</Link>
-				) : <></>}
+				) : (
+					<></>
+				)}
 
 				<style jsx>{`
 					main {

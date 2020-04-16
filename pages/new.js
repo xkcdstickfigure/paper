@@ -122,7 +122,9 @@ const newPage = props => {
 								className="material-icons"
 								style={{cursor: "pointer"}}
 								onClick={() => setCustomSlug(true)}
-							>edit</i>
+							>
+								edit
+							</i>
 						</p>
 					)}
 

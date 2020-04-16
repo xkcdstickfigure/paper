@@ -4,8 +4,8 @@ import postCardData from "../../util/postCardData";
 import db from "../../db";
 
 export default async (req, res) => {
-    const user = await auth(req.headers.authorization);
-    if (!user) return res.status(400).json({err: "invalidSession"});
+	const user = await auth(req.headers.authorization);
+	if (!user) return res.status(400).json({err: "invalidSession"});
 
 	res.json({
 		posts: await Promise.all(

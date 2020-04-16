@@ -4,8 +4,12 @@ import db from "../../db";
 import md from "../../util/md";
 
 export default async (req, res) => {
-    const user = await auth(req.headers.authorization);
-    if (typeof req.query.username !== "string" || typeof req.query.slug !== "string") return res.status(400).json({err: "invalidQueryParameters"});
+	const user = await auth(req.headers.authorization);
+	if (
+		typeof req.query.username !== "string" ||
+		typeof req.query.slug !== "string"
+	)
+		return res.status(400).json({err: "invalidQueryParameters"});
 
 	//Get Author
 	var author;

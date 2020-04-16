@@ -3,10 +3,10 @@ import postCardData from "../../util/postCardData";
 import db from "../../db";
 
 export default async (req, res) => {
-    //Get User from Alles API
+	//Get User from Alles API
 	var u;
 	try {
-        u = await getUser(req.query.username, true);
+		u = await getUser(req.query.username, true);
 	} catch (err) {
 		if (err.response && err.response.data.err === "invalidUser") {
 			return res.status(400).json({err: "invalidUser"});
@@ -36,5 +36,5 @@ export default async (req, res) => {
 	}
 
 	//Respond
-    res.json(response);
+	res.json(response);
 };

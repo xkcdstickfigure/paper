@@ -2,9 +2,10 @@ import auth from "../../util/auth";
 import db from "../../db";
 
 export default async (req, res) => {
-    const user = await auth(req.headers.authorization);
-    if (!user) return res.status(400).json({err: "invalidSession"});
-    if (typeof req.query.slug !== "string") return res.status(400).json({err: "invalidQueryParameters"});
+	const user = await auth(req.headers.authorization);
+	if (!user) return res.status(400).json({err: "invalidSession"});
+	if (typeof req.query.slug !== "string")
+		return res.status(400).json({err: "invalidQueryParameters"});
 
 	//Get Post
 	const post = await db.Post.findOne({

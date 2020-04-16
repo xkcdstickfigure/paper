@@ -4,24 +4,25 @@ import config from "../../config";
 import {v4 as uuid} from "uuid";
 
 export default async (req, res) => {
-    const user = await auth(req.headers.authorization);
-    if (!user) return res.status(400).json({err: "invalidSession"});
-    if (typeof req.query.slug !== "string") return res.status(400).json({err: "invalidQueryParameters"});
+	const user = await auth(req.headers.authorization);
+	if (!user) return res.status(400).json({err: "invalidSession"});
+	if (typeof req.query.slug !== "string")
+		return res.status(400).json({err: "invalidQueryParameters"});
 
 	//Validate Body
 	if (
-        !req.body ||
+		!req.body ||
 		typeof req.body.title !== "string" ||
 		typeof req.body.image !== "string" ||
 		typeof req.body.content !== "string"
 	)
-        return res.status(400).json({err: "invalidBodyParameters"});
-        
+		return res.status(400).json({err: "invalidBodyParameters"});
+
 	const title = req.body.title.trim();
 	const slug = req.query.slug;
 	const image = req.body.image.trim();
-    const content = req.body.content.trim();
-    
+	const content = req.body.content.trim();
+
 	if (
 		title.length < config.inputBounds.title.min ||
 		title.length > config.inputBounds.title.max ||
@@ -32,11 +33,11 @@ export default async (req, res) => {
 		content.length < config.inputBounds.content.min ||
 		content.length > config.inputBounds.content.max
 	)
-        return res.status(400).json({err: "invalidBodyParameters"});
-        
+		return res.status(400).json({err: "invalidBodyParameters"});
+
 	if (!validUrl(image) || !image.startsWith("https://"))
-        return res.status(400).json({err: "badImageUrl"});
-        
+		return res.status(400).json({err: "badImageUrl"});
+
 	if (slug !== makeSlug(slug)) return res.status(400).json({err: "badSlug"});
 
 	//Check slug is not already in use
