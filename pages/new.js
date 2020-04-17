@@ -8,6 +8,7 @@ import Input from "../reactants/Input";
 import Textarea from "../reactants/TextArea";
 import Button from "../reactants/Button";
 import Link from "next/link";
+import {Edit2} from "react-feather";
 
 const newPage = props => {
 	const [postTitle, setPostTitle] = useState("");
@@ -118,13 +119,10 @@ const newPage = props => {
 					) : (
 						<p style={{color: theme.grey8}}>
 							https://paper.alles.cx/{props.user.username}/{postSlug}{" "}
-							<i
-								className="material-icons"
+							<Edit2
 								style={{cursor: "pointer"}}
 								onClick={() => setCustomSlug(true)}
-							>
-								edit
-							</i>
+							/>
 						</p>
 					)}
 
