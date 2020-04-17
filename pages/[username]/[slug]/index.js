@@ -7,6 +7,7 @@ import Link from "next/link";
 import {useState, useEffect} from "react";
 import moment from "moment";
 import NewButton from "../../../reactants/NewButton";
+import {Heart} from "react-feather";
 
 moment.updateLocale("en", {
 	relativeTime: {
@@ -127,10 +128,14 @@ const postPage = props => {
 								: props.post.liked
 								? props.post.likes - 1
 								: props.post.likes}
-							<i
-								className={`material-icons ${liked ? "active" : ""}`}
+							<Heart
 								style={{
-									verticalAlign: "middle"
+									verticalAlign: "middle",
+									color: liked ? "#ff0044" : undefined,
+									fill: liked ? "#ff0044" : undefined,
+									cursor: "pointer",
+									height: 20,
+									marginLeft: 5
 								}}
 								onClick={() => {
 									setLiked(!liked);
@@ -146,9 +151,7 @@ const postPage = props => {
 										}
 									);
 								}}
-							>
-								favorite
-							</i>
+							/>
 						</p>
 					) : (
 						<></>
@@ -211,17 +214,6 @@ const postPage = props => {
 					.like {
 						text-align: right;
 						color: ${theme.grey4};
-					}
-
-					.like i {
-						font-size: 20px;
-						cursor: pointer;
-						margin-left: 5px;
-						vertical-align: center;
-					}
-
-					.like i.active {
-						color: #ff0044;
 					}
 				`}</style>
 
