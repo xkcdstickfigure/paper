@@ -13,7 +13,7 @@ export default props => {
 			<Head title={props.title ? `Paper // ${props.title}` : `Paper`}>
 				<link rel="shortcut icon" href="/icon.png" />
 			</Head>
-	
+
 			<Header
 				title="Paper"
 				userId={props.user ? props.user.id : null}
@@ -22,29 +22,29 @@ export default props => {
 			<main>
 				<div className="innerMain">{props.children}</div>
 			</main>
-	
+
 			<style jsx>{`
 				.page {
 					display: flex;
 					flex-flow: column;
 				}
-	
+
 				main {
 					padding: 20px;
 					flex-grow: 1;
 					background: ${theme.greyF};
 				}
-	
+
 				.innerMain {
 					max-width: 1000px;
 					margin: 20px auto;
 				}
 			`}</style>
-	
+
 			<style jsx global>{`
 				@import url("/nprogress.css");
 			`}</style>
-	
+
 			<GlobalStyles />
 		</div>
 	);
