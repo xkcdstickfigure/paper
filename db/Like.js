@@ -1,6 +1,6 @@
 import {DataTypes} from "sequelize";
 
-module.exports = db => {
+export default db => {
 	db.Like = db.define("like", {
 		userId: {
 			type: DataTypes.UUID,

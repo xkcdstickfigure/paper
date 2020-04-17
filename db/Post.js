@@ -1,6 +1,6 @@
 import {DataTypes} from "sequelize";
 
-module.exports = db => {
+export default db => {
 	db.Post = db.define(
 		"post",
 		{
