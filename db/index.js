@@ -1,5 +1,7 @@
 import credentials from "../credentials";
 import Sequelize from "sequelize";
+import Post from "./Post";
+import Like from "./Like";
 
 //Create Instance
 const db = new Sequelize(
@@ -18,5 +20,5 @@ const db = new Sequelize(
 module.exports = db;
 
 //Models
-require("./Post")(db);
-require("./Like")(db);
+Post(db);
+Like(db);
