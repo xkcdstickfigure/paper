@@ -16,7 +16,11 @@ export default props => {
 
 			<Header
 				title="Paper"
-				userId={props.user ? props.user.id : null}
+				user={props.user ? {
+					id: props.user.id,
+					href: "/[username]",
+					as: `/${props.user.username}`
+				} : null}
 				breadcrumbs={props.breadcrumbs}
 			/>
 			<main>
