@@ -4,6 +4,7 @@ import db from "../../db";
 
 export default async (req, res) => {
 	const user = await auth(req.headers.authorization);
+	if (!user) return res.status(401).json({err: "invalidSession"});
 	if (
 		typeof req.query.username !== "string" ||
 		typeof req.query.slug !== "string"

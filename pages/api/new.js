@@ -5,7 +5,7 @@ import {v4 as uuid} from "uuid";
 
 export default async (req, res) => {
 	const user = await auth(req.headers.authorization);
-	if (!user) return res.status(400).json({err: "invalidSession"});
+	if (!user) return res.status(401).json({err: "invalidSession"});
 	if (typeof req.query.slug !== "string")
 		return res.status(400).json({err: "invalidQueryParameters"});
 
