@@ -241,6 +241,8 @@ const postPage = props => {
 						display: inline-block;
 						padding: 0 5px;
 						border: solid 1px ${theme.borderGrey};
+						white-space: pre-wrap;
+						word-break: break-all;
 					}
 
 					.content pre code {
