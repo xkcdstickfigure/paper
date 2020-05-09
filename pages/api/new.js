@@ -1,7 +1,9 @@
 import auth from "../../util/auth";
 import db from "../../db";
 import config from "../../config";
+import credentials from "../../credentials";
 import {v4 as uuid} from "uuid";
+import log from "@alleshq/log";
 
 export default async (req, res) => {
 	const user = await auth(req.headers.authorization);
@@ -58,6 +60,17 @@ export default async (req, res) => {
 		content,
 		image
 	});
+
+	// Log
+	log(
+		credentials.logarithm,
+		"paper.new",
+		{
+			id: post.id,
+			slug
+		},
+		user.id
+	);
 
 	//Response
 	res.json({

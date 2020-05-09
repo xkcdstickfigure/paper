@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@alleshq/log@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@alleshq/log/-/log-1.0.0.tgz#be0eea1b0bc7782fe67012b6ca2f32b2b5e78039"
+  integrity sha512-nFEtJXhPi24KeK7SIw4NSUP84koS6O4xyAwiOBo7EQwhSyZNr6RxO99CfCA1xzbltiyV4F1XOJlFBU3lWuPbsA==
+  dependencies:
+    axios "^0.19.2"
+
 "@ampproject/toolbox-core@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@ampproject/toolbox-core/-/toolbox-core-1.1.1.tgz#540c8f3ab0f5d1faa1ba35282cd5f5f3f0e16a76"
