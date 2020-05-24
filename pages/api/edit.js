@@ -8,6 +8,8 @@ export default async (req, res) => {
 	if (typeof req.query.slug !== "string")
 		return res.status(400).json({err: "invalidQueryParameters"});
 
+	return res.status(503).json({err: "disabled"});
+
 	//Validate Body
 	if (
 		!req.body ||

@@ -30,6 +30,55 @@ const newPage = props => {
 			]}
 		>
 			<main>
+				<h1>Temporarily disabled</h1>
+				<p>
+					We recently discovered a security issue in Paper that could allow
+					somebody to create links that take control of your account. To keep
+					everyone safe, we've temporarily disabled the creation and editing of
+					posts until we build Paper v2. Sorry about that.
+				</p>
+				<p>
+					If you want to share your shorter thoughts, you can post stuff on{" "}
+					<a href="https://alles.cx" className="normal">
+						Alles.cx
+					</a>
+					. Keep up to date with this situation by following{" "}
+					<a href="https://alles.cx/archie" className="normal">
+						@archie
+					</a>
+					.
+				</p>
+			</main>
+
+			<style jsx>{`
+				main {
+					background: white;
+					border: solid 1px ${theme.borderGrey};
+					width: 100%;
+					padding: 50px;
+					box-sizing: border-box;
+					overflow: hidden;
+				}
+
+				h1 {
+					font-size: 40px;
+					margin-bottom: 10px;
+				}
+			`}</style>
+		</Page>
+	);
+
+	return (
+		<Page
+			title="New Post"
+			user={props.user}
+			breadcrumbs={[
+				{
+					name: "new"
+				}
+			]}
+		>
+			<main>
 				<h1>New Post</h1>
 				<p>
 					Make sure you check our{" "}
